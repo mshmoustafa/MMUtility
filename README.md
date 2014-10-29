@@ -1,5 +1,4 @@
 #MMUtility
-=========
 
 **Objective C convenience methods to do miscellaneous tasks on iOS (and possibly Mac OS X)**
 
