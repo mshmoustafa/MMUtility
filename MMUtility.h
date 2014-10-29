@@ -13,6 +13,9 @@
 
 /*****************************************
  * Image Utilities
+ * Methods included:
+ *   - various scaling methods
+ *   - encoding/decoding images as Base64
  *****************************************/
 
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
@@ -29,12 +32,22 @@
 
 /*****************************************
  * String Utilities
+ * Methods included:
+ *   - trim whitespace in an NSString
  *****************************************/
 
 + (NSMutableString *)trim:(NSString *)string;
 
 /*****************************************
  * File System Utilities
+ * Methods included:
+ *   - get the application documents
+ *     directory (on iOS, tested iOS 7<)
+ *   - create an absolute path using the
+ *     app documents directory and a
+ *     relative path
+ *   - check if a file exists
+ *   - delete a file at a file path
  *****************************************/
 
 + (NSString *)applicationDocumentsDirectory;
@@ -47,6 +60,9 @@
 
 /*****************************************
  * JSON Utilities
+ * Methods included:
+ *   - encode/decode a CLLocation as an
+ *     NSDictionary
  *****************************************/
 
 + (NSDictionary *)JsonDictionaryFromLocation:(CLLocation *)location;
@@ -55,6 +71,9 @@
 
 /*****************************************
  * Date Utilities
+ * Methods included:
+ *   - serialize/deserialize an NSDate as
+ *     an NSString
  *****************************************/
 
 + (NSString *)internationalStringFromDate:(NSDate *)date;
@@ -63,6 +82,10 @@
 
 /*****************************************
  * Threading and Backgrounding Utilities
+ * Methods included:
+ *   - convenience methods to add a block
+ *     to the default background thread
+ *     and main thread
  *****************************************/
 //
 + (void)addBlockToDefaultBackgroundThread:(void (^)(void))block;
@@ -70,6 +93,8 @@
 
 /*****************************************
  * UIColor Utilities
+ * Methods included:
+ *   - get color components from a UIColor
  *****************************************/
 
 + (float)getRedFromUIColor:(UIColor *)color;
