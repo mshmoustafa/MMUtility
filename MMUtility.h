@@ -42,7 +42,7 @@
  * File System Utilities
  * Methods included:
  *   - get the application documents
- *     directory (on iOS, tested iOS 7<)
+ *     directory (on iOS, tested iOS 7+)
  *   - create an absolute path using the
  *     app documents directory and a
  *     relative path
