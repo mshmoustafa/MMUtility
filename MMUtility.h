@@ -1,6 +1,6 @@
 //
 //  MMUtility.h
-//  
+//
 //
 //  Created by Muhammad-Sharif Moustafa on 6/28/14.
 //
@@ -11,7 +11,10 @@
 
 @interface MMUtility : NSObject
 
-//Image Utilities
+/*****************************************
+ * Image Utilities
+ *****************************************/
+
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSizePreservingAspectRatio:(CGSize)newSize;
@@ -24,10 +27,16 @@
 
 + (UIImage *)decodeBase64AsImage:(NSString *)base64String;
 
-//String Utilities
+/*****************************************
+ * String Utilities
+ *****************************************/
+
 + (NSMutableString *)trim:(NSString *)string;
 
-//File System Utilities
+/*****************************************
+ * File System Utilities
+ *****************************************/
+
 + (NSString *)applicationDocumentsDirectory;
 
 + (NSString *)absolutePathWithRelativePath:(NSString *)relativePath;
@@ -36,21 +45,33 @@
 
 + (BOOL)deleteFileAtFilePath:(NSString *)filePath;
 
-//JSON Utilities
+/*****************************************
+ * JSON Utilities
+ *****************************************/
+
 + (NSDictionary *)JsonDictionaryFromLocation:(CLLocation *)location;
 
 + (CLLocation *)locationFromJsonDictionary:(NSDictionary *)dictionary;
 
-//Date Utilities
+/*****************************************
+ * Date Utilities
+ *****************************************/
+
 + (NSString *)internationalStringFromDate:(NSDate *)date;
 
 + (NSDate *)dateFromInternationalString:(NSString *)string;
 
-//Threading and Backgrounding Utilities
+/*****************************************
+ * Threading and Backgrounding Utilities
+ *****************************************/
+//
 + (void)addBlockToDefaultBackgroundThread:(void (^)(void))block;
 + (void)addBlockToMainThread:(void (^)(void))block;
 
-//UIColor Utilities
+/*****************************************
+ * UIColor Utilities
+ *****************************************/
+
 + (float)getRedFromUIColor:(UIColor *)color;
 + (float)getBlueFromUIColor:(UIColor *)color;
 + (float)getGreenFromUIColor:(UIColor *)color;
