@@ -1,6 +1,6 @@
 //
 //  MMUtility.m
-//  
+//
 //
 //  Created by Muhammad-Sharif Moustafa on 6/28/14.
 //
@@ -13,6 +13,8 @@
 
 @implementation MMUtility
 
+// adapted from Paul Lynch's response to this question on StackOverflow
+// http://stackoverflow.com/questions/2658738/the-simplest-way-to-resize-an-uiimage
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
     //UIGraphicsBeginImageContext(newSize);
     // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
@@ -25,12 +27,12 @@
 }
 
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSizePreservingAspectRatio:(CGSize)newSize {
-    
+
     CGSize originalSize = image.size;
-    
+
     CGFloat widthDiff = abs( originalSize.width - newSize.width );
     CGFloat heightDiff = abs( originalSize.height - newSize.height );
-    
+
     if (widthDiff < heightDiff) {
         return [MMUtility imageWithImage:image scaledToWidth:newSize.width];
     } else {
@@ -40,20 +42,20 @@
 }
 
 + (UIImage *)imageWithImage:(UIImage *)image scaledToWidth:(CGFloat)width {
-    
+
     //scale height by same factor as width
     CGFloat originalWidth = image.size.width;
     CGFloat scalingFactor = width / originalWidth;
-    
+
     CGFloat scaledHeight = image.size.height * scalingFactor;
-    
+
     CGSize newSize = CGSizeMake(width, scaledHeight);
-    
+
     //UIGraphicsBeginImageContext(newSize);
     // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
     // Pass 1.0 to force exact pixel size.
     UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
-    
+
     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -61,20 +63,20 @@
 }
 
 + (UIImage *)imageWithImage:(UIImage *)image scaledToHeight:(CGFloat)height {
-    
+
     //scale height by same factor as width
     CGFloat originalHeight = image.size.height;
     CGFloat scalingFactor = height / originalHeight;
-    
+
     CGFloat scaledWidth = image.size.width * scalingFactor;
-    
+
     CGSize newSize = CGSizeMake(scaledWidth, height);
-    
+
     //UIGraphicsBeginImageContext(newSize);
     // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
     // Pass 1.0 to force exact pixel size.
     UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
-    
+
     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -109,7 +111,7 @@
 + (BOOL)deleteFileAtFilePath:(NSString *)filePath
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    
+
     NSError *error;
     return [fileManager removeItemAtPath:filePath error:&error];
 }
@@ -125,7 +127,7 @@
         NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
         return [UIImage imageWithData:data];
     }
-    
+
     return nil;
 }
 
@@ -142,7 +144,7 @@
                                  @"speed" : [NSNumber numberWithDouble:location.speed],
                                  @"timestamp" : [MMUtility internationalStringFromDate:location.timestamp]
                                  };
-    
+
     return dictionary;
 }
 
@@ -156,7 +158,7 @@
     CLLocationDirection course = [((NSNumber *)dictionary[@"course"]) doubleValue];
     CLLocationSpeed speed = [((NSNumber *)dictionary[@"speed"]) doubleValue];
     NSDate *timestamp = [MMUtility dateFromInternationalString:dictionary[@"timestamp"]];
-    
+
     return [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(latitude, longitude)
                                          altitude:altitude
                                horizontalAccuracy:horizontalAccuracy
@@ -171,7 +173,7 @@
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZZ"];
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
-    
+
     return dateString;
 }
 
@@ -179,9 +181,9 @@
 {
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZZ"];
-    
+
     NSDate *date = [dateFormatter dateFromString:string];
-    
+
     return date;
 }
 
