@@ -37,6 +37,7 @@
  *****************************************/
 
 + (NSMutableString *)trim:(NSString *)string;
++ (BOOL)stringIsEmpty:(NSString *)string;
 
 /*****************************************
  * File System Utilities

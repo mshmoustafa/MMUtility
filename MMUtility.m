@@ -89,6 +89,14 @@
     return trimmedString;
 }
 
++ (BOOL)stringIsEmpty:(NSString *)string {
+    NSString *newString = [MMUtility trim:string];
+    if (newString.length == 0) {
+        return YES;
+    }
+    return NO;
+}
+
 + (NSString *)applicationDocumentsDirectory
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
