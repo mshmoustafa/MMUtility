@@ -30,8 +30,8 @@
 
     CGSize originalSize = image.size;
 
-    CGFloat widthDiff = abs( originalSize.width - newSize.width );
-    CGFloat heightDiff = abs( originalSize.height - newSize.height );
+    CGFloat widthDiff = fabs( originalSize.width - newSize.width );
+    CGFloat heightDiff = fabs( originalSize.height - newSize.height );
 
     if (widthDiff < heightDiff) {
         return [MMUtility imageWithImage:image scaledToWidth:newSize.width];
@@ -84,7 +84,7 @@
 }
 
 + (NSMutableString *)trim:(NSString *)string {
-    NSMutableString *trimmedString = [string stringByTrimmingCharactersInSet:
+    NSMutableString *trimmedString = (NSMutableString*)[string stringByTrimmingCharactersInSet:
                                [NSCharacterSet whitespaceCharacterSet]];
     return trimmedString;
 }
